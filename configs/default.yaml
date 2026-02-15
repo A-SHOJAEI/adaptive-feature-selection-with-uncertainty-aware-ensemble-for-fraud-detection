@@ -1,0 +1,34 @@
+# Default configuration for adaptive uncertainty fraud detection
+# Full model with all novel components enabled
+
+data:
+  data_dir: null  # Set to path of IEEE fraud dataset if available, otherwise uses synthetic data
+  test_size: 0.2
+  val_size: 0.1
+
+preprocessing:
+  numerical_strategy: median
+  categorical_strategy: most_frequent
+  scale: true
+
+model:
+  # Feature selection parameters
+  feature_budget: 0.6  # Select 60% of features
+  use_feature_selection: true
+
+  # Focal-uncertainty loss parameters
+  focal_alpha: 0.25  # Weight for minority class
+  focal_gamma: 2.0   # Focusing parameter
+  uncertainty_weight: 0.1
+
+  # Ensemble parameters
+  use_uncertainty_weighting: true
+
+  # Base model parameters
+  n_estimators: 500
+  learning_rate: 0.05
+  max_depth: 6
+
+training:
+  random_state: 42
+  log_level: INFO

@@ -1,0 +1,40 @@
+{
+  "model_path": "models_ablation/checkpoints/best_model.pkl",
+  "preprocessor_path": "models_ablation/checkpoints/preprocessor.pkl",
+  "config": {
+    "data": {
+      "data_dir": null,
+      "test_size": 0.2,
+      "val_size": 0.1
+    },
+    "preprocessing": {
+      "numerical_strategy": "median",
+      "categorical_strategy": "most_frequent",
+      "scale": true
+    },
+    "model": {
+      "feature_budget": 1.0,
+      "use_feature_selection": false,
+      "focal_alpha": 0.25,
+      "focal_gamma": 2.0,
+      "uncertainty_weight": 0.0,
+      "use_uncertainty_weighting": false,
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "max_depth": 6
+    },
+    "training": {
+      "random_state": 42,
+      "log_level": "INFO"
+    }
+  },
+  "data_stats": {
+    "n_train": 35000,
+    "n_val": 5000,
+    "n_test": 10000,
+    "n_features": 105,
+    "fraud_rate_train": 0.044085714285714284,
+    "fraud_rate_val": 0.044,
+    "fraud_rate_test": 0.0441
+  }
+}

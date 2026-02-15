@@ -1,0 +1,35 @@
+# Ablation configuration: baseline without novel components
+# This disables adaptive feature selection and uncertainty weighting
+# to measure their contribution to performance
+
+data:
+  data_dir: null
+  test_size: 0.2
+  val_size: 0.1
+
+preprocessing:
+  numerical_strategy: median
+  categorical_strategy: most_frequent
+  scale: true
+
+model:
+  # ABLATION: Disable adaptive feature selection
+  feature_budget: 1.0  # Use all features
+  use_feature_selection: false
+
+  # Focal loss still used (but without uncertainty term)
+  focal_alpha: 0.25
+  focal_gamma: 2.0
+  uncertainty_weight: 0.0  # ABLATION: No uncertainty regularization
+
+  # ABLATION: Disable uncertainty-weighted ensemble (simple averaging)
+  use_uncertainty_weighting: false
+
+  # Same base model parameters for fair comparison
+  n_estimators: 500
+  learning_rate: 0.05
+  max_depth: 6
+
+training:
+  random_state: 42
+  log_level: INFO
